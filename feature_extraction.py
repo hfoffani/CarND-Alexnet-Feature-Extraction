@@ -21,12 +21,12 @@ fc7 = AlexNet(resized, feature_extract=True)
 shape = (fc7.get_shape().as_list()[-1], nb_classes)  # use this shape for the weight matrix
 # fc8
 # fc(43, relu=False, name='fc8')
-fc8W = tf.Variable(tf.truncated_normal(shape))
-fc8b = tf.Variable(tf.ones(nb_classes))
+fc8W = tf.Variable(tf.truncated_normal(shape, stddev=1e-02))
+fc8b = tf.Variable(tf.zeros(nb_classes))
 
-print("fc7", fc7.get_shape(), fc7.dtype)
-print("fc8W", fc8W.get_shape(), fc8W.dtype)
-print("fc8b", fc8b.get_shape(), fc8b.dtype)
+# print("fc7", fc7.get_shape(), fc7.dtype)
+# print("fc8W", fc8W.get_shape(), fc8W.dtype)
+# print("fc8b", fc8b.get_shape(), fc8b.dtype)
 
 logits = tf.nn.xw_plus_b(fc7, fc8W, fc8b)
 probs = tf.nn.softmax(logits)
