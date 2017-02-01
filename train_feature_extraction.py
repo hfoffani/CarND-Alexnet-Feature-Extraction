@@ -10,6 +10,11 @@ with open('train.p', 'rb') as f:
 X_train = data['features']
 y_train = data['labels']
 
+with open('test.p', 'rb') as f:
+    data = pickle.load(f)
+X_test = data['features']
+y_test = data['labels']
+
 
 # TODO: Split data into training and validation sets.
 from sklearn.model_selection import train_test_split
@@ -59,7 +64,7 @@ sess.run(init)
 # TODO: Define loss, training, accuracy operations.
 # HINT: Look back at your traffic signs project solution, you may
 # be able to reuse some the code.
-EPOCHS = 2
+EPOCHS = 5
 BATCH_SIZE = 128
 LEARNING_RATE = 0.001
 
@@ -110,4 +115,11 @@ with tf.Session() as sess:
         
     saver.save(sess, 'txlearn')
     print("Model saved")
+
+
+with tf.Session() as sess:
+    saver.restore(sess, tf.train.latest_checkpoint('.'))
+
+    test_accuracy = evaluate(X_test, y_test)
+    print("Test Accuracy = {:.3f}".format(test_accuracy))
 
