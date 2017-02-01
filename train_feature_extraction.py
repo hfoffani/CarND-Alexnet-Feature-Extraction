@@ -64,7 +64,7 @@ sess.run(init)
 # TODO: Define loss, training, accuracy operations.
 # HINT: Look back at your traffic signs project solution, you may
 # be able to reuse some the code.
-EPOCHS = 5
+EPOCHS = 10
 BATCH_SIZE = 128
 LEARNING_RATE = 0.001
 
