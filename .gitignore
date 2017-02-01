@@ -3,3 +3,8 @@ __pycache__
 bvlc-alexnet.npy
 train.p
 .vscode
+
+
+test.p
+txlearn.*
+checkpoint
